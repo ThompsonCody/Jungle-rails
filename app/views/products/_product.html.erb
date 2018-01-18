@@ -1,13 +1,23 @@
 <article class="product">
+  <% if product.quantity == 0 %>
+    <aside class="sold-out">
+        <span tile="toooooooo bad">
+          Sold Out!
+        </span>
+    </aside>
+  <% end %>
+
   <header>
     <%= link_to product do %>
       <%= image_tag product.image.thumb, alt: product.name %>
       <h4><%= product.name %></h4>
     <% end %>
   </header>
+
   <p class="description">
     <%= product.description %>
   </p>
+
   <footer class="actions">
     <%= link_to add_item_cart_path(product_id: product.id), class: 'btn btn-primary', method: :put do %>
       <%= fa_icon "shopping-cart", text: 'Add' %>
